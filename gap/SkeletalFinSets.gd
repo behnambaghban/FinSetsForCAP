@@ -138,6 +138,8 @@ DeclareOperation( "ImageObject",
 # Technical functions
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_SKELETAL_FIN_SETS" );
 
+DeclareGlobalFunction( "INSTALL_RANDOM_METHODS_FOR_SKELETAL_FINSETS" );
+
 DeclareGlobalFunction( "SKELETAL_FIN_SETS_ExplicitCoequalizer" );
 CapJitAddTypeSignature( "SKELETAL_FIN_SETS_ExplicitCoequalizer", [ IsBigInt, IsList ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsBigInt ) ) );
 

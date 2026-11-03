@@ -72,6 +72,8 @@ InstallMethod( SkeletalCategoryOfFiniteSets,
         
     fi;
     
+    INSTALL_RANDOM_METHODS_FOR_SKELETAL_FINSETS( cat );
+    
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
         
         Finalize( cat );
@@ -322,6 +324,33 @@ InstallGlobalFunction( SKELETAL_FIN_SETS_IsMonomorphism,
     return true;
     
 end );
+
+## 
+InstallGlobalFunction( INSTALL_RANDOM_METHODS_FOR_SKELETAL_FINSETS,
+  function ( SkeletalFinSets )
+      
+##
+AddRandomObjectByList( SkeletalFinSets,
+  function ( SkeletalFinSets, L )
+    if IsEmpty( L ) or ForAny( L, IsNegInt ) then
+      Error( "the list passed to 'RandomObjectByList' in ", Name( SkeletalFinSets ), " must be a non-empty list of non-negative integers!\n" );
+    fi;
+      return FinSet( SkeletalFinSets, Random( L ) );
+  end );
+      
+##
+AddRandomObjectByInteger( SkeletalFinSets,
+  function ( SkeletalFinSets, n )
+      if n = 0 then return FinSet( SkeletalFinSets, [] ); fi;
+      if n < 0 then Error( "the integer passed to 'RandomObjectByInteger' in ", Name( SkeletalFinSets ), " must be a non-negative integer!\n" );; fi;
+      return RandomObjectByList( SkeletalFinSets, List ( [1 .. n] ) );
+  end );
+
+# AddRandomMorphism
+
+end
+);
+
 
 ##
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_SKELETAL_FIN_SETS,
