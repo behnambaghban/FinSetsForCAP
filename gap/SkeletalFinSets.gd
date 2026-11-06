@@ -26,6 +26,30 @@ DeclareCategory( "IsObjectInSkeletalCategoryOfFiniteSets",
 DeclareCategory( "IsMorphismInSkeletalCategoryOfFiniteSets",
                  IsCapCategoryMorphism );
 
+####################################
+##
+#! @Section Random Methods
+##
+####################################
+
+if false then
+
+#! @Description
+#! The arguments are a category <A>C</A> and a non-empty list <A>L</A> of non-negative integers.
+#! The output is an object whose cardinality is a random element in <A>L</A>.
+#! @Returns an object in a category of skeletal finite sets
+#! @Arguments C, L
+DeclareOperation( "RandomObjectByList", [ IsCategoryOfSkeletalFinSets, IsList ] );
+
+#! @Description
+#! The arguments are a category of skeletal finite sets <A>C</A> and a non-negative integer <A>n</A>.
+#! The output is an object whose cardinality is at most <A>n</A>.
+#! @Returns an object in a category of skeletal finite sets
+#! @Arguments C, n
+DeclareOperation( "RandomObjectByInteger", [ IsCategoryOfSkeletalFinSets, IsInt ] );
+
+fi;
+
 #! @Section Attributes
 
 #! @Description
