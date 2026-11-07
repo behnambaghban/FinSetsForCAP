@@ -57,8 +57,8 @@ DeclareOperation( "RandomObjectByInteger", [ IsCategoryOfSkeletalFinSets, IsInt 
 DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger", [ IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsInt ] );
 
 #! @Description
-#! The arguments are a category of skeletal finite sets <A>C</A> and a non-empty list <A>L</A> of positive integers.
-#! The output is a morphism from an object <A>S</A> to an object <A>R</A> whose cardinalities are random elements in <A>L</A>.
+#! The arguments are a category of skeletal finite sets <A>C</A> and a non-empty list <A>L</A>, containing two non-empty lists <A>L1</A> and <A>L2</A> of positive integers.
+#! The output is a morphism from an object <A>S</A> to an object <A>R</A> whose cardinalities are random elements in <A>L1</A> and <A>L2</A> respectively.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments C, L
 DeclareOperation( "RandomMorphismByList", [ IsCategoryOfSkeletalFinSets, IsList ] );
