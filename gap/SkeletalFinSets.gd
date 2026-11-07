@@ -48,6 +48,41 @@ DeclareOperation( "RandomObjectByList", [ IsCategoryOfSkeletalFinSets, IsList ] 
 #! @Arguments C, n
 DeclareOperation( "RandomObjectByInteger", [ IsCategoryOfSkeletalFinSets, IsInt ] );
 
+#! @Description
+#! The arguments are two objects <A>S</A>, <A>R</A> and an integer <A>n</A>.
+#! The output is a morphism from <A>S</A> to <A>R</A> defined by a random function of sets.
+#! In particular, the argument <A>n</A> will be disregarded.
+#! @Returns  a morphism in a category of skeletal finite sets
+#! @Arguments S, R, n
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger", [ IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsInt ] );
+
+#! @Description
+#! The arguments are a category of skeletal finite sets <A>C</A> and a non-empty list <A>L</A> of positive integers.
+#! The output is a morphism from an object <A>S</A> to an object <A>R</A> whose cardinalities are random elements in <A>L</A>.
+#! @Returns  a morphism in a category of skeletal finite sets
+#! @Arguments C, L
+DeclareOperation( "RandomMorphismByList", [ IsCategoryOfSkeletalFinSets, IsList ] );
+
+#! @Description
+#! The arguments are a category of skeletal finite sets <A>C</A> and a non-negative integer <A>n</A>.
+#! The output is a morphism whose source and range cardinalities are at most <A>n</A> and at least <A>1</A>.
+#! @Returns  a morphism in a category of skeletal finite sets
+#! @Arguments C, n
+DeclareOperation( "RandomMorphismByInteger", [ IsCategoryOfSkeletalFinSets, IsInt ] );
+
+#! @Description
+#! The arguments are an object <A>S</A> and a non-negative integer <A>n</A>.
+#! The output is a morphism from <A>S</A> to an object <A>R</A> whose cardinalities are at most <A>n</A> and at least <A>1</A>.
+#! @Returns  a morphism in a category of skeletal finite sets
+#! @Arguments S, n
+DeclareOperation( "RandomMorphismWithFixedSourceByInteger", [ IsCategoryOfSkeletalFinSetsObject, IsInt ] );
+
+#! @Description
+#! The arguments are an object <A>R</A> and a non-negative integer <A>n</A>.
+#! The output is a morphism to <A>R</A> from an object <A>S</A> whose cardinality is at most <A>n</A>.
+#! @Returns a morphism in a category of skeletal finite sets
+#! @Arguments R, n
+DeclareOperation( "RandomMorphismWithFixedRangeByInteger", [ IsCategoryOfSkeletalFinSetsObject, IsInt ] );
 fi;
 
 #! @Section Attributes
