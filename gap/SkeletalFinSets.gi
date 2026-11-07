@@ -363,19 +363,19 @@ AddRandomMorphismWithFixedSourceAndRangeByInteger ( SkeletalFinSets,
 AddRandomMorphismByList ( SkeletalFinSets, 
   function ( SkeletalFinSets, L )
     local S, R;
-    if Length(L) = 0 then Error( "the list passed to 'RandomMorphismWithFixedSourceAndRangeByList' in ", Name( SkeletalFinSets ), " must be non-empty!\n" ); fi;      
-    if not ForAll( L, c -> IsInt(c) and c > 0 ) then
-      Error( "the list passed to 'RandomMorphismWithFixedSourceAndRangeByList' in ", Name( SkeletalFinSets ), " must be a list of positive integers!\n" );
+    if Length( L[1] ) = 0 or Length( L[2] ) = 0 then Error( "the lists passed to 'RandomMorphismByList' in ", Name( SkeletalFinSets ), " must be non-empty!\n" ); fi;      
+    if ( not ForAll( L[1], c -> IsInt(c) and c > 0 ) ) or ( not ForAll( L[2], c -> IsInt(c) and c > 0 ) ) then
+      Error( "the lists passed to 'RandomMorphismByList' in ", Name( SkeletalFinSets ), " must be lists of positive integers!\n" );
     fi;
-    S := RandomObjectByList( SkeletalFinSets, [ Random( L ) ] );
-    R := RandomObjectByList( SkeletalFinSets, [ Random( L ) ] );
+    S := RandomObjectByList( SkeletalFinSets, [ Random( L[1] ) ] );
+    R := RandomObjectByList( SkeletalFinSets, [ Random( L[2] ) ] );
     return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1);
   end );
 
 ##
 AddRandomMorphismByInteger ( SkeletalFinSets, 
   function ( SkeletalFinSets, n )
-    return RandomMorphismWithFixedSourceAndRangeByList( SkeletalFinSets, [1 .. n] );
+    return RandomMorphismByList( SkeletalFinSets, [ [1 .. n], [1 .. n] ] );
   end );
 
 ##
