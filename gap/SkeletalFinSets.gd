@@ -35,7 +35,7 @@ DeclareCategory( "IsMorphismInSkeletalCategoryOfFiniteSets",
 if false then
 
 #! @Description
-#! The arguments are a category <A>C</A> and a non-empty list <A>L</A> of non-negative integers.
+#! The arguments are a category <A>C</A> of skeletal finite sets and a non-empty list <A>L</A> of non-negative integers.
 #! The output is an object whose cardinality is a random element in <A>L</A>.
 #! @Returns an object in a category of skeletal finite sets
 #! @Arguments C, L
@@ -49,16 +49,16 @@ DeclareOperation( "RandomObjectByList", [ IsCategoryOfSkeletalFinSets, IsList ] 
 DeclareOperation( "RandomObjectByInteger", [ IsCategoryOfSkeletalFinSets, IsInt ] );
 
 #! @Description
-#! The arguments are two objects <A>S</A>, <A>R</A> and an integer <A>n</A>.
+#! The arguments are a category <A>C</A> of skeletal finite sets, two objects <A>S</A>, <A>R</A> and an integer <A>n</A>.
 #! The output is a morphism from <A>S</A> to <A>R</A> defined by a random function of sets.
 #! In particular, the argument <A>n</A> will be disregarded.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments S, R, n
-DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger", [ IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger", [ IsCategoryOfSkeletalFinSets, IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsInt ] );
 
 #! @Description
-#! The arguments are a category of skeletal finite sets <A>C</A> and a non-empty list <A>L</A>, containing two non-empty lists <A>L1</A> and <A>L2</A> of positive integers.
-#! The output is a morphism from an object <A>S</A> to an object <A>R</A> whose cardinalities are random elements in <A>L1</A> and <A>L2</A> respectively.
+#! The arguments are a category of skeletal finite sets <A>C</A> and a non-empty list <A>L</A>, containing two non-empty lists <A>L[1]</A> and <A>L[2]</A> of positive integers.
+#! The output is a morphism from an object <A>S</A> to an object <A>R</A> whose cardinalities are random elements in <A>L[1]</A> and <A>L[2]</A> respectively.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments C, L
 DeclareOperation( "RandomMorphismByList", [ IsCategoryOfSkeletalFinSets, IsList ] );
@@ -71,18 +71,18 @@ DeclareOperation( "RandomMorphismByList", [ IsCategoryOfSkeletalFinSets, IsList 
 DeclareOperation( "RandomMorphismByInteger", [ IsCategoryOfSkeletalFinSets, IsInt ] );
 
 #! @Description
-#! The arguments are an object <A>S</A> and a non-negative integer <A>n</A>.
-#! The output is a morphism from <A>S</A> to an object <A>R</A> whose cardinalities are at most <A>n</A> and at least <A>1</A>.
+#! The arguments are a category of skeletal finite sets <A>C</A>, an object <A>S</A> and a non-negative integer <A>n</A>.
+#! The output is a morphism from <A>S</A> to a random object <A>R</A> whose cardinality is at most <A>n</A> and at least <A>1</A>.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments S, n
-DeclareOperation( "RandomMorphismWithFixedSourceByInteger", [ IsCategoryOfSkeletalFinSetsObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedSourceByInteger", [ IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsInt ] );
 
 #! @Description
-#! The arguments are an object <A>R</A> and a non-negative integer <A>n</A>.
-#! The output is a morphism to <A>R</A> from an object <A>S</A> whose cardinality is at most <A>n</A>.
+#! The arguments are a category of skeletal finite sets <A>C</A>, an object <A>R</A> and a non-negative integer <A>n</A>.
+#! The output is a morphism to <A>R</A> from an random object <A>S</A> whose cardinality is at most <A>n</A>.
 #! @Returns a morphism in a category of skeletal finite sets
 #! @Arguments R, n
-DeclareOperation( "RandomMorphismWithFixedRangeByInteger", [ IsCategoryOfSkeletalFinSetsObject, IsInt ] );
+DeclareOperation( "RandomMorphismWithFixedRangeByInteger", [ IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsInt ] );
 fi;
 
 #! @Section Attributes
