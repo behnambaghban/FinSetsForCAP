@@ -341,9 +341,8 @@ AddRandomObjectByList( SkeletalFinSets,
 ##
 AddRandomObjectByInteger( SkeletalFinSets,
   function ( SkeletalFinSets, n )
-    if n = 0 then return FinSet( SkeletalFinSets, [] ); fi;
-    if n < 0 then Error( "the integer passed to 'RandomObjectByInteger' in ", Name( SkeletalFinSets ), " must be a non-negative integer!\n" );; fi;
-    return RandomObjectByList( SkeletalFinSets, List ( [1 .. n] ) );
+    if n < 0 then Error( "the integer passed to 'RandomObjectByInteger' in ", Name( SkeletalFinSets ), " must be a non-negative integer!\n" ); fi;
+    return RandomObjectByList( SkeletalFinSets, List ( [0 .. n] ) );
   end );
 
 ##
