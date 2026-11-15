@@ -13,7 +13,7 @@ obj1 := RandomObjectByList( SkeletalFinSets, L );;
 c := Cardinality( obj1 );; c in L;
 #! true
 obj2 := RandomObjectByInteger( SkeletalFinSets, 50);;
-IsWellDefined( obj2 ) and Cardinality( obj2 ) < 50;
+IsWellDefined( obj2 ) and Cardinality( obj2 ) <= 50;
 #! true
 mor1 := RandomMorphismWithFixedSourceAndRangeByInteger( 
                 SkeletalFinSets, empty_set, empty_set, 1 );;
