@@ -424,6 +424,40 @@ AddRandomMorphismWithFixedRangeByInteger ( SkeletalFinSets,
 
 end );
 
+
+AddRandomMorphismWithFixedSourceByList ( SkeletalFinSets,
+  function ( SkeletalFinSets, S, L )
+    local R;
+
+    Filtered(L, x -> IsInt( x ) and x <> 0);
+
+    if Length (L) = 0 then
+      Error( "the list passed to 'RandomObjectByList' in ", Name( SkeletalFinSets ), " must be a non-empty list of positive integers!\n" );
+    fi;
+
+    R := RandomObjectByList ( SkeletalFinSets, L );
+
+    return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1 );
+
+end );
+
+AddRandomMorphismWithFixedRangeByList ( SkeletalFinSets,
+  function ( SkeletalFinSets, R, L )
+    local S;
+
+    S := RandomObjectByList ( SkeletalFinSets, L );
+
+    return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1 );
+
+end );
+
+AddRandomMorphismWithFixedSourceAndRangeByList ( SkeletalFinSets,
+  function ( SkeletalFinSets, S, R, L )
+
+    return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1 );
+
+end );
+
 end
 );
 
