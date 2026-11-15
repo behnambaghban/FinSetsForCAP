@@ -345,7 +345,7 @@ end );
 AddRandomObjectByInteger( SkeletalFinSets,
   function ( SkeletalFinSets, n )
 
-    if n < 0 or not IsInt( n ) then Error( "the integer passed to 'RandomObjectByInteger' in ", Name( SkeletalFinSets ), " must be a non-negative integer!\n" ); fi;
+    if not IsInt( n ) or n < 0 then Error( "the integer passed to 'RandomObjectByInteger' in ", Name( SkeletalFinSets ), " must be a non-negative integer!\n" ); fi;
 
     return RandomObjectByList( SkeletalFinSets, List ( [0 .. n] ) );
 
@@ -370,7 +370,7 @@ AddRandomMorphismByList ( SkeletalFinSets,
   function ( SkeletalFinSets, L )
     local S, R;
 
-    if ( Length( L ) < 2 or not IsList( L[1] ) or not IsList( L[2] ) )
+    if ( Length( L ) <> 2 or not IsList( L[1] ) or not IsList( L[2] ) )
     or ( Length( L[1] ) = 0 or Length( L[2] ) = 0)
     or ( not ForAll( L[1], c -> IsInt(c) and c > 0 ) ) or ( not ForAll( L[2], c -> IsInt(c) and c > 0 ) ) then
       Error( "the list passed to 'RandomMorphismByList' in ", Name( SkeletalFinSets ), " must contain two non-empty lists of positive integers!\n" );
@@ -391,7 +391,7 @@ AddRandomMorphismByInteger ( SkeletalFinSets,
     if n = 0 then
           return MapOfFinSets ( FinSet( SkeletalFinSets, 0 ), [], FinSet( SkeletalFinSets, 0 ) );
     elif not IsPosInt( n ) then
-        Error( "the integer passed to 'RandomObjectByInteger' in ", Name( SkeletalFinSets ), " must be a positive integer!\n" );
+        Error( "the integer passed to 'RandomMorphismByInteger' in ", Name( SkeletalFinSets ), " must be a positive integer!\n" );
     fi;
 
     return RandomMorphismByList( SkeletalFinSets, [ [1 .. n], [1 .. n] ] );
@@ -403,7 +403,7 @@ AddRandomMorphismWithFixedSourceByInteger ( SkeletalFinSets,
   function ( SkeletalFinSets, S, n )
     local R;
 
-    if n <= 0 or not IsInt( n ) then
+    if not IsInt( n ) or n <= 0 then
       Error( "the integer passed to 'RandomMorphismWithFixedSourceByInteger' in ", Name( SkeletalFinSets ), " must be a positive integer!\n" );
     fi;
 
@@ -419,6 +419,8 @@ AddRandomMorphismWithFixedRangeByInteger ( SkeletalFinSets,
     local S;
 
     S := RandomObjectByInteger( SkeletalFinSets, n );
+    
+    if Cardinality( R ) = 0 then S := FinSet( SkeletalFinSets, 0); fi;
 
     return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1 );
 
@@ -429,10 +431,8 @@ AddRandomMorphismWithFixedSourceByList ( SkeletalFinSets,
   function ( SkeletalFinSets, S, L )
     local R;
 
-    Filtered(L, x -> IsInt( x ) and x <> 0);
-
-    if Length (L) = 0 then
-      Error( "the list passed to 'RandomObjectByList' in ", Name( SkeletalFinSets ), " must be a non-empty list of positive integers!\n" );
+    if Length (L) = 0 or not ForAll( L, c -> IsInt(c) and c > 0 ) then
+      Error( "the list passed to 'RandomMorphismWithFixedSourceByList' in ", Name( SkeletalFinSets ), " must be a non-empty list of positive integers!\n" );
     fi;
 
     R := RandomObjectByList ( SkeletalFinSets, L );
@@ -441,11 +441,23 @@ AddRandomMorphismWithFixedSourceByList ( SkeletalFinSets,
 
 end );
 
+
 AddRandomMorphismWithFixedRangeByList ( SkeletalFinSets,
   function ( SkeletalFinSets, R, L )
     local S;
 
-    S := RandomObjectByList ( SkeletalFinSets, L );
+    if Length( L ) = 0 or not ForAll( L, c -> IsInt( c ) and c >= 0 ) then
+      Error( "the list passed to 'RandomMorphismWithFixedRangeByList' in ", Name( SkeletalFinSets ), " must be a non-empty list of non-negative integers!\n" );
+    fi;
+
+    if Cardinality( R ) = 0 then
+      if not 0 in L then
+        Error( "the range passed to 'RandomMorphismWithFixedRangeByList' in ", Name( SkeletalFinSets ), " is empty, so the list must contain 0!\n" );
+      fi;
+      S := FinSet( SkeletalFinSets, 0 );
+    else
+      S := RandomObjectByList( SkeletalFinSets, L );
+    fi;
 
     return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1 );
 
