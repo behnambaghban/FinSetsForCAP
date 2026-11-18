@@ -331,142 +331,145 @@ InstallGlobalFunction( INSTALL_RANDOM_METHODS_FOR_SKELETAL_FINSETS,
 
 ##
 AddRandomObjectByList( SkeletalFinSets,
-  function ( SkeletalFinSets, L )
+  function ( cat, L )
 
     if IsEmpty( L ) or not ForAll( L, x -> IsInt( x ) and x >= 0 ) then
-      Error( "the list passed to 'RandomObjectByList' in ", Name( SkeletalFinSets ), " must be a non-empty list of non-negative integers!\n" );
+      Error( "the list passed to 'RandomObjectByList' in ", Name( cat ), " must be a non-empty list of non-negative integers!\n" );
     fi;
 
-    return FinSet( SkeletalFinSets, Random( L ) );
+    return FinSet( cat, Random( L ) );
 
 end );
 
 ##
 AddRandomObjectByInteger( SkeletalFinSets,
-  function ( SkeletalFinSets, n )
+  function ( cat, n )
 
-    if not IsInt( n ) or n < 0 then Error( "the integer passed to 'RandomObjectByInteger' in ", Name( SkeletalFinSets ), " must be a non-negative integer!\n" ); fi;
+    if ( not IsInt( n ) ) or n < 0 then 
+      Error( "the integer passed to 'RandomObjectByInteger' in ", Name( cat ), " must be a non-negative integer!\n" ); 
+    fi;
 
-    return RandomObjectByList( SkeletalFinSets, List ( [0 .. n] ) );
+    return RandomObjectByList( cat, List( [ 0 .. n ] ) );
 
 end );
 
 ##
 AddRandomMorphismWithFixedSourceAndRangeByInteger ( SkeletalFinSets,
-  function ( SkeletalFinSets, S, R, n )
+  function ( cat, S, R, n )
 
-    if Cardinality(R) = 0 and Cardinality(S) = 0 then
-      return MapOfFinSets ( S, [], R );
-    elif Cardinality(R) = 0 and Cardinality(S) <> 0 then
-      Error( "the range passed to 'RandomMorphismWithFixedSourceAndRangeByInteger' in ", Name( SkeletalFinSets ), " must be a non-empty set!\n" );
+    if Cardinality( R ) = 0 and Cardinality( S ) = 0 then
+      return MapOfFinSets( S, [], R );
+    elif Cardinality( R ) = 0 and Cardinality( S ) <> 0 then
+      Error( "the range passed to 'RandomMorphismWithFixedSourceAndRangeByInteger' in ", Name( cat ), " must be a non-empty set!\n" );
     fi;
 
-    return MapOfFinSets ( S, List ( [ 0 .. Cardinality(S) - 1 ], i -> Random( 0, Cardinality( R ) - 1 ) ), R );
+    return MapOfFinSets( S, List( [ 0 .. Cardinality( S ) - 1 ], i -> Random( 0, Cardinality( R ) - 1 ) ), R );
 
 end );
 
 ##
 AddRandomMorphismByList ( SkeletalFinSets,
-  function ( SkeletalFinSets, L )
+  function ( cat, L )
     local S, R;
 
-    if ( Length( L ) <> 2 or not IsList( L[1] ) or not IsList( L[2] ) )
-    or ( Length( L[1] ) = 0 or Length( L[2] ) = 0)
-    or ( not ForAll( L[1], c -> IsInt(c) and c > 0 ) ) or ( not ForAll( L[2], c -> IsInt(c) and c > 0 ) ) then
-      Error( "the list passed to 'RandomMorphismByList' in ", Name( SkeletalFinSets ), " must contain two non-empty lists of positive integers!\n" );
+    if ( Length( L ) <> 2 ) or ( not IsList( L[ 1 ] ) ) or ( not IsList( L[ 2 ] ) )
+    or ( Length( L[ 1 ] ) = 0 ) or ( Length( L[ 2 ] ) = 0 )
+    or ( not ForAll( L[ 1 ], c -> IsInt( c ) and c > 0 ) ) 
+    or ( not ForAll( L[ 2 ], c -> IsInt( c ) and c > 0 ) ) then
+      Error( "the list passed to 'RandomMorphismByList' in ", Name( cat ), " must contain two non-empty lists of positive integers!\n" );
     fi;
 
-    S := RandomObjectByList( SkeletalFinSets, [ Random( L[1] ) ] );
+    S := RandomObjectByList( cat, [ Random( L[ 1 ] ) ] );
 
-    R := RandomObjectByList( SkeletalFinSets, [ Random( L[2] ) ] );
+    R := RandomObjectByList( cat, [ Random( L[ 2 ] ) ] );
 
-    return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1);
+    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
 
 end );
 
 ##
 AddRandomMorphismByInteger ( SkeletalFinSets,
-  function ( SkeletalFinSets, n )
+  function ( cat, n )
 
     if n = 0 then
-          return MapOfFinSets ( FinSet( SkeletalFinSets, 0 ), [], FinSet( SkeletalFinSets, 0 ) );
+      return MapOfFinSets( FinSet( cat, 0 ), [], FinSet( cat, 0 ) );
     elif not IsPosInt( n ) then
-        Error( "the integer passed to 'RandomMorphismByInteger' in ", Name( SkeletalFinSets ), " must be a positive integer!\n" );
+      Error( "the integer passed to 'RandomMorphismByInteger' in ", Name( cat ), " must be a positive integer!\n" );
     fi;
 
-    return RandomMorphismByList( SkeletalFinSets, [ [1 .. n], [1 .. n] ] );
+    return RandomMorphismByList( cat, [ [ 1 .. n ], [ 1 .. n ] ] );
 
 end );
 
 ##
 AddRandomMorphismWithFixedSourceByInteger ( SkeletalFinSets,
-  function ( SkeletalFinSets, S, n )
+  function ( cat, S, n )
     local R;
 
-    if not IsInt( n ) or n <= 0 then
-      Error( "the integer passed to 'RandomMorphismWithFixedSourceByInteger' in ", Name( SkeletalFinSets ), " must be a positive integer!\n" );
+    if ( not IsInt( n ) ) or n <= 0 then
+      Error( "the integer passed to 'RandomMorphismWithFixedSourceByInteger' in ", Name( cat ), " must be a positive integer!\n" );
     fi;
 
-    R := RandomObjectByList( SkeletalFinSets, [1 .. n]);
+    R := RandomObjectByList( cat, [ 1 .. n ] );
 
-    return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1);
+    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
 
 end );
 
 ##
 AddRandomMorphismWithFixedRangeByInteger ( SkeletalFinSets,
-  function ( SkeletalFinSets, R, n )
+  function ( cat, R, n )
     local S;
 
-    S := RandomObjectByInteger( SkeletalFinSets, n );
+    S := RandomObjectByInteger( cat, n );
     
-    if Cardinality( R ) = 0 then S := FinSet( SkeletalFinSets, 0); fi;
+    if Cardinality( R ) = 0 then S := FinSet( cat, 0 ); fi;
 
-    return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1 );
+    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
 
 end );
 
 
 AddRandomMorphismWithFixedSourceByList ( SkeletalFinSets,
-  function ( SkeletalFinSets, S, L )
+  function ( cat, S, L )
     local R;
 
-    if Length (L) = 0 or not ForAll( L, c -> IsInt(c) and c > 0 ) then
-      Error( "the list passed to 'RandomMorphismWithFixedSourceByList' in ", Name( SkeletalFinSets ), " must be a non-empty list of positive integers!\n" );
+    if Length( L ) = 0 or not ForAll( L, c -> IsInt( c ) and c > 0 ) then
+      Error( "the list passed to 'RandomMorphismWithFixedSourceByList' in ", Name( cat ), " must be a non-empty list of positive integers!\n" );
     fi;
 
-    R := RandomObjectByList ( SkeletalFinSets, L );
+    R := RandomObjectByList( cat, L );
 
-    return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1 );
+    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
 
 end );
 
 
 AddRandomMorphismWithFixedRangeByList ( SkeletalFinSets,
-  function ( SkeletalFinSets, R, L )
+  function ( cat, R, L )
     local S;
 
-    if Length( L ) = 0 or not ForAll( L, c -> IsInt( c ) and c >= 0 ) then
-      Error( "the list passed to 'RandomMorphismWithFixedRangeByList' in ", Name( SkeletalFinSets ), " must be a non-empty list of non-negative integers!\n" );
+    if Length( L ) = 0 or ( not ForAll( L, c -> IsInt( c ) and c >= 0 ) ) then
+      Error( "the list passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " must be a non-empty list of non-negative integers!\n" );
     fi;
 
     if Cardinality( R ) = 0 then
-      if not 0 in L then
-        Error( "the range passed to 'RandomMorphismWithFixedRangeByList' in ", Name( SkeletalFinSets ), " is empty, so the list must contain 0!\n" );
+      if ( not 0 in L ) then
+        Error( "the range passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " is empty, so the list must contain 0!\n" );
       fi;
-      S := FinSet( SkeletalFinSets, 0 );
+      S := FinSet( cat, 0 );
     else
-      S := RandomObjectByList( SkeletalFinSets, L );
+      S := RandomObjectByList( cat, L );
     fi;
 
-    return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1 );
+    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
 
 end );
 
 AddRandomMorphismWithFixedSourceAndRangeByList ( SkeletalFinSets,
-  function ( SkeletalFinSets, S, R, L )
+  function ( cat, S, R, L )
 
-    return RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, S, R, 1 );
+    return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
 
 end );
 
