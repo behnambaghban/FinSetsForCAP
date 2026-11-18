@@ -353,7 +353,7 @@ AddRandomObjectByInteger( SkeletalFinSets,
 
     fi;
 
-    return RandomObjectByList( cat, List( [ 0 .. n ] ) );
+    return RandomObjectByList( cat, [ 0 .. n ] );
 
 end );
 
