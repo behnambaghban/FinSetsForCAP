@@ -7,12 +7,12 @@
 #! @Example
 LoadPackage( "FinSetsForCAP", false );
 #! true
-empty_set := RandomObjectByList( SkeletalFinSets, [0]);;
-L := [10, 20, 50, 100, 500];;
+empty_set := RandomObjectByList( SkeletalFinSets, [ 0 ]);;
+L := [ 10, 20, 50, 100, 500 ];;
 obj1 := RandomObjectByList( SkeletalFinSets, L );;
 c := Cardinality( obj1 );; c in L;
 #! true
-obj2 := RandomObjectByInteger( SkeletalFinSets, 50);;
+obj2 := RandomObjectByInteger( SkeletalFinSets, 50 );;
 IsWellDefined( obj2 ) and Cardinality( obj2 ) <= 50;
 #! true
 mor1 := RandomMorphismWithFixedSourceAndRangeByInteger( 
@@ -31,11 +31,11 @@ mor4 := RandomMorphismWithFixedSourceByInteger(
                 SkeletalFinSets, obj2, 50 );;
 IsWellDefined( mor4 );
 #! true
-mor5 := RandomMorphismByList( SkeletalFinSets, [L, L] );;
+mor5 := RandomMorphismByList( SkeletalFinSets, [ L, L ] );;
 IsWellDefined( mor5 );
 #! true
-Cardinality( Source( mor5 )) in L  and 
-    Cardinality( Range( mor5 )) in L ;
+Cardinality( Source( mor5 ) ) in L  and
+    Cardinality( Range( mor5 ) ) in L ;
 #! true
 #! @EndExample
 
