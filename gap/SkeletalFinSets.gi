@@ -334,7 +334,9 @@ AddRandomObjectByList( SkeletalFinSets,
   function ( cat, L )
 
     if IsEmpty( L ) or not ForAll( L, x -> IsInt( x ) and x >= 0 ) then
+
       Error( "the list passed to 'RandomObjectByList' in ", Name( cat ), " must be a non-empty list of non-negative integers!\n" );
+
     fi;
 
     return FinSet( cat, Random( L ) );
@@ -345,8 +347,10 @@ end );
 AddRandomObjectByInteger( SkeletalFinSets,
   function ( cat, n )
 
-    if ( not IsInt( n ) ) or n < 0 then 
+    if not IsInt( n ) or n < 0 then
+
       Error( "the integer passed to 'RandomObjectByInteger' in ", Name( cat ), " must be a non-negative integer!\n" ); 
+
     fi;
 
     return RandomObjectByList( cat, List( [ 0 .. n ] ) );
@@ -358,9 +362,13 @@ AddRandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets,
   function ( cat, S, R, n )
 
     if Cardinality( R ) = 0 and Cardinality( S ) = 0 then
+
       return MapOfFinSets( S, [], R );
+
     elif Cardinality( R ) = 0 and Cardinality( S ) <> 0 then
+
       Error( "the range passed to 'RandomMorphismWithFixedSourceAndRangeByInteger' in ", Name( cat ), " must be a non-empty set!\n" );
+
     fi;
 
     return MapOfFinSets( S, List( [ 0 .. Cardinality( S ) - 1 ], i -> Random( 0, Cardinality( R ) - 1 ) ), R );
@@ -372,11 +380,13 @@ AddRandomMorphismByList( SkeletalFinSets,
   function ( cat, L )
     local S, R;
 
-    if ( Length( L ) <> 2 ) or ( not IsList( L[ 1 ] ) )
-      or ( not IsList( L[ 2 ] ) ) or ( Length( L[ 1 ] ) = 0 )
-      or ( Length( L[ 2 ] ) = 0 ) or ( not ForAll( L[ 1 ], c -> IsInt( c ) and c > 0 ) )
-      or ( not ForAll( L[ 2 ], c -> IsInt( c ) and c > 0 ) ) then
+    if Length( L ) <> 2  or not IsList( L[ 1 ] )
+      or not IsList( L[ 2 ] ) or Length( L[ 1 ] ) = 0
+      or Length( L[ 2 ] ) = 0 or not ForAll( L[ 1 ], c -> IsInt( c ) and c > 0 )
+      or not ForAll( L[ 2 ], c -> IsInt( c ) and c > 0 ) then
+
       Error( "the list passed to 'RandomMorphismByList' in ", Name( cat ), " must contain two non-empty lists of positive integers!\n" );        
+
     fi;
 
     S := RandomObjectByList( cat, L[ 1 ] );
@@ -392,9 +402,13 @@ AddRandomMorphismByInteger( SkeletalFinSets,
   function ( cat, n )
 
     if n = 0 then
+
       return MapOfFinSets( FinSet( cat, 0 ), [], FinSet( cat, 0 ) );
+
     elif not IsPosInt( n ) then
+
       Error( "the integer passed to 'RandomMorphismByInteger' in ", Name( cat ), " must be a positive integer!\n" );
+
     fi;
 
     return RandomMorphismByList( cat, [ [ 1 .. n ], [ 1 .. n ] ] );
@@ -406,8 +420,10 @@ AddRandomMorphismWithFixedSourceByInteger( SkeletalFinSets,
   function ( cat, S, n )
     local R;
 
-    if ( not IsInt( n ) ) or n <= 0 then
+    if not IsInt( n ) or n <= 0 then
+
       Error( "the integer passed to 'RandomMorphismWithFixedSourceByInteger' in ", Name( cat ), " must be a positive integer!\n" );
+
     fi;
 
     R := RandomObjectByList( cat, [ 1 .. n ] );
@@ -424,7 +440,9 @@ AddRandomMorphismWithFixedRangeByInteger( SkeletalFinSets,
     S := RandomObjectByInteger( cat, n );
     
     if Cardinality( R ) = 0 then
+
       S := FinSet( cat, 0 );
+
     fi;
 
     return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
@@ -437,7 +455,9 @@ AddRandomMorphismWithFixedSourceByList( SkeletalFinSets,
     local R;
 
     if Length( L ) = 0 or not ForAll( L, c -> IsInt( c ) and c > 0 ) then
+
       Error( "the list passed to 'RandomMorphismWithFixedSourceByList' in ", Name( cat ), " must be a non-empty list of positive integers!\n" );
+
     fi;
 
     R := RandomObjectByList( cat, L );
@@ -452,16 +472,25 @@ AddRandomMorphismWithFixedRangeByList( SkeletalFinSets,
     local S;
 
     if Length( L ) = 0 or ( not ForAll( L, c -> IsInt( c ) and c >= 0 ) ) then
+
       Error( "the list passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " must be a non-empty list of non-negative integers!\n" );
+
     fi;
 
     if Cardinality( R ) = 0 then
+
       if ( not 0 in L ) then
+
         Error( "the range passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " is empty, so the list must contain 0!\n" );
+
       fi;
+
       S := FinSet( cat, 0 );
+
     else
+
       S := RandomObjectByList( cat, L );
+
     fi;
 
     return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
