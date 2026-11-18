@@ -72,7 +72,7 @@ InstallMethod( SkeletalCategoryOfFiniteSets,
         
     fi;
     
-    INSTALL_RANDOM_METHODS_FOR_SKELETAL_FINSETS( cat );
+    SKELETAL_FIN_SETS_RANDOM_METHODS( cat );
     
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
         
@@ -326,7 +326,7 @@ InstallGlobalFunction( SKELETAL_FIN_SETS_IsMonomorphism,
 end );
 
 ##
-InstallGlobalFunction( INSTALL_RANDOM_METHODS_FOR_SKELETAL_FINSETS,
+InstallGlobalFunction( SKELETAL_FIN_SETS_RANDOM_METHODS,
   function ( SkeletalFinSets )
 
 ##
