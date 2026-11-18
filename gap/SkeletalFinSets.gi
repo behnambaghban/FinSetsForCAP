@@ -379,9 +379,9 @@ AddRandomMorphismByList( SkeletalFinSets,
       Error( "the list passed to 'RandomMorphismByList' in ", Name( cat ), " must contain two non-empty lists of positive integers!\n" );        
     fi;
 
-    S := RandomObjectByList( cat, [ Random( L[ 1 ] ) ] );
+    S := RandomObjectByList( cat, L[ 1 ] );
 
-    R := RandomObjectByList( cat, [ Random( L[ 2 ] ) ] );
+    R := RandomObjectByList( cat, L[ 2 ] );
 
     return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
 
