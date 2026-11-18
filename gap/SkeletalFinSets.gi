@@ -354,7 +354,7 @@ AddRandomObjectByInteger( SkeletalFinSets,
 end );
 
 ##
-AddRandomMorphismWithFixedSourceAndRangeByInteger ( SkeletalFinSets,
+AddRandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets,
   function ( cat, S, R, n )
 
     if Cardinality( R ) = 0 and Cardinality( S ) = 0 then
@@ -368,7 +368,7 @@ AddRandomMorphismWithFixedSourceAndRangeByInteger ( SkeletalFinSets,
 end );
 
 ##
-AddRandomMorphismByList ( SkeletalFinSets,
+AddRandomMorphismByList( SkeletalFinSets,
   function ( cat, L )
     local S, R;
 
@@ -388,7 +388,7 @@ AddRandomMorphismByList ( SkeletalFinSets,
 end );
 
 ##
-AddRandomMorphismByInteger ( SkeletalFinSets,
+AddRandomMorphismByInteger( SkeletalFinSets,
   function ( cat, n )
 
     if n = 0 then
@@ -402,7 +402,7 @@ AddRandomMorphismByInteger ( SkeletalFinSets,
 end );
 
 ##
-AddRandomMorphismWithFixedSourceByInteger ( SkeletalFinSets,
+AddRandomMorphismWithFixedSourceByInteger( SkeletalFinSets,
   function ( cat, S, n )
     local R;
 
@@ -417,7 +417,7 @@ AddRandomMorphismWithFixedSourceByInteger ( SkeletalFinSets,
 end );
 
 ##
-AddRandomMorphismWithFixedRangeByInteger ( SkeletalFinSets,
+AddRandomMorphismWithFixedRangeByInteger( SkeletalFinSets,
   function ( cat, R, n )
     local S;
 
@@ -430,7 +430,7 @@ AddRandomMorphismWithFixedRangeByInteger ( SkeletalFinSets,
 end );
 
 
-AddRandomMorphismWithFixedSourceByList ( SkeletalFinSets,
+AddRandomMorphismWithFixedSourceByList( SkeletalFinSets,
   function ( cat, S, L )
     local R;
 
@@ -445,7 +445,7 @@ AddRandomMorphismWithFixedSourceByList ( SkeletalFinSets,
 end );
 
 
-AddRandomMorphismWithFixedRangeByList ( SkeletalFinSets,
+AddRandomMorphismWithFixedRangeByList( SkeletalFinSets,
   function ( cat, R, L )
     local S;
 
@@ -466,7 +466,7 @@ AddRandomMorphismWithFixedRangeByList ( SkeletalFinSets,
 
 end );
 
-AddRandomMorphismWithFixedSourceAndRangeByList ( SkeletalFinSets,
+AddRandomMorphismWithFixedSourceAndRangeByList( SkeletalFinSets,
   function ( cat, S, R, L )
 
     return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
