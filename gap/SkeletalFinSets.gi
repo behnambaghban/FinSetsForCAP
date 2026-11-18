@@ -372,11 +372,11 @@ AddRandomMorphismByList( SkeletalFinSets,
   function ( cat, L )
     local S, R;
 
-    if ( Length( L ) <> 2 ) or ( not IsList( L[ 1 ] ) ) or ( not IsList( L[ 2 ] ) )
-    or ( Length( L[ 1 ] ) = 0 ) or ( Length( L[ 2 ] ) = 0 )
-    or ( not ForAll( L[ 1 ], c -> IsInt( c ) and c > 0 ) ) 
-    or ( not ForAll( L[ 2 ], c -> IsInt( c ) and c > 0 ) ) then
-      Error( "the list passed to 'RandomMorphismByList' in ", Name( cat ), " must contain two non-empty lists of positive integers!\n" );
+    if ( Length( L ) <> 2 ) or ( not IsList( L[ 1 ] ) )
+      or ( not IsList( L[ 2 ] ) ) or ( Length( L[ 1 ] ) = 0 )
+      or ( Length( L[ 2 ] ) = 0 ) or ( not ForAll( L[ 1 ], c -> IsInt( c ) and c > 0 ) )
+      or ( not ForAll( L[ 2 ], c -> IsInt( c ) and c > 0 ) ) then
+      Error( "the list passed to 'RandomMorphismByList' in ", Name( cat ), " must contain two non-empty lists of positive integers!\n" );        
     fi;
 
     S := RandomObjectByList( cat, [ Random( L[ 1 ] ) ] );
@@ -423,7 +423,9 @@ AddRandomMorphismWithFixedRangeByInteger( SkeletalFinSets,
 
     S := RandomObjectByInteger( cat, n );
     
-    if Cardinality( R ) = 0 then S := FinSet( cat, 0 ); fi;
+    if Cardinality( R ) = 0 then
+      S := FinSet( cat, 0 );
+    fi;
 
     return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
 
