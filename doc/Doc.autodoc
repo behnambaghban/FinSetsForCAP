@@ -85,6 +85,7 @@
 
 @Subsection Random Methods
 @InsertChunk TestRandomMethods
+@InsertChunk MoreTestRandomMethods
 
 @Chapter The skeletal category of finite sets with counting starting at 1
 
