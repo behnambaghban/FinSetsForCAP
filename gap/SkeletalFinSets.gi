@@ -334,9 +334,8 @@ AddRandomObjectByList( SkeletalFinSets,
   function ( cat, L )
 
     if IsEmpty( L ) or not ForAll( L, x -> IsInt( x ) and x >= 0 ) then
-
+      # COVERAGE_IGNORE_NEXT_LINE
       Error( "the list passed to 'RandomObjectByList' in ", Name( cat ), " must be a non-empty list of non-negative integers!\n" );
-
     fi;
 
     return FinSet( cat, Random( L ) );
@@ -349,8 +348,8 @@ AddRandomObjectByInteger( SkeletalFinSets,
 
     if not IsInt( n ) or n < 0 then
 
-      Error( "the integer passed to 'RandomObjectByInteger' in ", Name( cat ), " must be a non-negative integer!\n" ); 
-
+      # COVERAGE_IGNORE_NEXT_LINE
+      Error( "the integer passed to 'RandomObjectByInteger' in ", Name( cat ), " must be a non-negative integer!\n" );
     fi;
 
     return RandomObjectByList( cat, [ 0 .. n ] );
@@ -367,6 +366,7 @@ AddRandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets,
 
     elif Cardinality( R ) = 0 and Cardinality( S ) <> 0 then
 
+      # COVERAGE_IGNORE_NEXT_LINE
       Error( "the range passed to 'RandomMorphismWithFixedSourceAndRangeByInteger' in ", Name( cat ), " must be a non-empty set!\n" );
 
     fi;
@@ -385,7 +385,8 @@ AddRandomMorphismByList( SkeletalFinSets,
       or Length( L[ 2 ] ) = 0 or not ForAll( L[ 1 ], c -> IsInt( c ) and c > 0 )
       or not ForAll( L[ 2 ], c -> IsInt( c ) and c > 0 ) then
 
-      Error( "the list passed to 'RandomMorphismByList' in ", Name( cat ), " must contain two non-empty lists of positive integers!\n" );        
+      # COVERAGE_IGNORE_NEXT_LINE
+      Error( "the list passed to 'RandomMorphismByList' in ", Name( cat ), " must contain two non-empty lists of positive integers!\n" );
 
     fi;
 
@@ -404,6 +405,7 @@ AddRandomMorphismByInteger( SkeletalFinSets,
     if n = 0 then
 
       return MapOfFinSets( FinSet( cat, 0 ), [], FinSet( cat, 0 ) );
+      # COVERAGE_IGNORE_NEXT_LINE
 
     elif not IsPosInt( n ) then
 
@@ -422,6 +424,7 @@ AddRandomMorphismWithFixedSourceByInteger( SkeletalFinSets,
 
     if not IsInt( n ) or n <= 0 then
 
+      # COVERAGE_IGNORE_NEXT_LINE
       Error( "the integer passed to 'RandomMorphismWithFixedSourceByInteger' in ", Name( cat ), " must be a positive integer!\n" );
 
     fi;
@@ -456,6 +459,7 @@ AddRandomMorphismWithFixedSourceByList( SkeletalFinSets,
 
     if Length( L ) = 0 or not ForAll( L, c -> IsInt( c ) and c > 0 ) then
 
+      # COVERAGE_IGNORE_NEXT_LINE
       Error( "the list passed to 'RandomMorphismWithFixedSourceByList' in ", Name( cat ), " must be a non-empty list of positive integers!\n" );
 
     fi;
@@ -473,6 +477,7 @@ AddRandomMorphismWithFixedRangeByList( SkeletalFinSets,
 
     if Length( L ) = 0 or ( not ForAll( L, c -> IsInt( c ) and c >= 0 ) ) then
 
+      # COVERAGE_IGNORE_NEXT_LINE
       Error( "the list passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " must be a non-empty list of non-negative integers!\n" );
 
     fi;
@@ -482,6 +487,7 @@ AddRandomMorphismWithFixedRangeByList( SkeletalFinSets,
       if ( not 0 in L ) then
 
         Error( "the range passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " is empty, so the list must contain 0!\n" );
+      # COVERAGE_IGNORE_NEXT_LINE
 
       fi;
 
