@@ -360,15 +360,14 @@ end );
 AddRandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets,
   function ( cat, S, R, n )
 
-    if Cardinality( R ) = 0 and Cardinality( S ) = 0 then
-
-      return MapOfFinSets( S, [], R );
-
-    elif Cardinality( R ) = 0 and Cardinality( S ) <> 0 then
+    if Cardinality( R ) = 0 and Cardinality( S ) <> 0 then
 
       # COVERAGE_IGNORE_NEXT_LINE
       Error( "the range passed to 'RandomMorphismWithFixedSourceAndRangeByInteger' in ", Name( cat ), " must be a non-empty set!\n" );
 
+    elif Cardinality( R ) = 0 and Cardinality( S ) = 0 then
+
+      return MapOfFinSets( S, [], R );
     fi;
 
     return MapOfFinSets( S, List( [ 0 .. Cardinality( S ) - 1 ], i -> Random( 0, Cardinality( R ) - 1 ) ), R );
@@ -402,14 +401,14 @@ end );
 AddRandomMorphismByInteger( SkeletalFinSets,
   function ( cat, n )
 
-    if n = 0 then
+    if not IsInt( n ) or n < 0 then
+
+      # COVERAGE_IGNORE_NEXT_LINE
+      Error( "the integer passed to 'RandomMorphismByInteger' in ", Name( cat ), " must be a non-negative integer!\n" );
+
+    elif n = 0 then
 
       return MapOfFinSets( FinSet( cat, 0 ), [], FinSet( cat, 0 ) );
-      # COVERAGE_IGNORE_NEXT_LINE
-
-    elif not IsPosInt( n ) then
-
-      Error( "the integer passed to 'RandomMorphismByInteger' in ", Name( cat ), " must be a positive integer!\n" );
 
     fi;
 
@@ -440,11 +439,13 @@ AddRandomMorphismWithFixedRangeByInteger( SkeletalFinSets,
   function ( cat, R, n )
     local S;
 
-    S := RandomObjectByInteger( cat, n );
-    
     if Cardinality( R ) = 0 then
 
       S := FinSet( cat, 0 );
+
+    else
+
+      S := RandomObjectByInteger( cat, n );
 
     fi;
 
@@ -480,16 +481,12 @@ AddRandomMorphismWithFixedRangeByList( SkeletalFinSets,
       # COVERAGE_IGNORE_NEXT_LINE
       Error( "the list passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " must be a non-empty list of non-negative integers!\n" );
 
-    fi;
+    elif Cardinality( R ) = 0 and ( not 0 in L ) then
 
-    if Cardinality( R ) = 0 then
-
-      if ( not 0 in L ) then
-
-        Error( "the range passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " is empty, so the list must contain 0!\n" );
       # COVERAGE_IGNORE_NEXT_LINE
+      Error( "the range passed to 'RandomMorphismWithFixedRangeByList' in ", Name( cat ), " is empty, so the list must contain 0!\n" );
 
-      fi;
+    elif Cardinality( R ) = 0 then
 
       S := FinSet( cat, 0 );
 
