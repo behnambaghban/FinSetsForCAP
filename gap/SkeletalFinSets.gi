@@ -367,7 +367,7 @@ AddRandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets,
 
     elif Cardinality( R ) = 0 and Cardinality( S ) = 0 then
 
-      return MapOfFinSets( S, [], R );
+      return MapOfFinSets( S, [ ], R );
     fi;
 
     return MapOfFinSets( S, List( [ 0 .. Cardinality( S ) - 1 ], i -> Random( 0, Cardinality( R ) - 1 ) ), R );
@@ -379,7 +379,7 @@ AddRandomMorphismByList( SkeletalFinSets,
   function ( cat, L )
     local S, R;
 
-    if Length( L ) <> 2  or not IsList( L[ 1 ] )
+    if Length( L ) <> 2 or not IsList( L[ 1 ] )
       or not IsList( L[ 2 ] ) or Length( L[ 1 ] ) = 0
       or Length( L[ 2 ] ) = 0 or not ForAll( L[ 1 ], c -> IsInt( c ) and c > 0 )
       or not ForAll( L[ 2 ], c -> IsInt( c ) and c > 0 ) then
@@ -389,9 +389,9 @@ AddRandomMorphismByList( SkeletalFinSets,
 
     fi;
 
-    S := RandomObjectByList( cat, L[ 1 ] );
+    S := RandomObjectByList( cat, L[1] );
 
-    R := RandomObjectByList( cat, L[ 2 ] );
+    R := RandomObjectByList( cat, L[2] );
 
     return RandomMorphismWithFixedSourceAndRangeByInteger( cat, S, R, 1 );
 
@@ -408,7 +408,7 @@ AddRandomMorphismByInteger( SkeletalFinSets,
 
     elif n = 0 then
 
-      return MapOfFinSets( FinSet( cat, 0 ), [], FinSet( cat, 0 ) );
+      return MapOfFinSets( FinSet( cat, 0 ), [ ], FinSet( cat, 0 ) );
 
     fi;
 
