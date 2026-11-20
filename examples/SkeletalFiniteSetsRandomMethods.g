@@ -19,10 +19,12 @@ Cardinality( obj1 ) in L;
 obj2 := RandomObjectByInteger( SkeletalFinSets, 10 );;
 IsWellDefined( obj2 );
 #! true
-mor0 := RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, obj0, obj0, 10 );;
+mor0 := RandomMorphismWithFixedSourceAndRangeByInteger( 
+                SkeletalFinSets, obj0, obj0, 10 );;
 IsWellDefined( mor0 );
 #! true
-mor1 := RandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets, obj1, obj1, 10 );;
+mor1 := RandomMorphismWithFixedSourceAndRangeByInteger( 
+                SkeletalFinSets, obj1, obj1, 10 );;
 IsWellDefined( mor1 );
 #! true
 mor2 := RandomMorphismByList( SkeletalFinSets, [ L, L ] );;
@@ -37,25 +39,32 @@ IsWellDefined( mor03 );
 mor4 := RandomMorphismByInteger( SkeletalFinSets, 10 );;
 IsWellDefined( mor4 );
 #! true
-mor5 := RandomMorphismWithFixedSourceByInteger( SkeletalFinSets, obj1, 10 );;
+mor5 := RandomMorphismWithFixedSourceByInteger( 
+                SkeletalFinSets, obj1, 10 );;
 IsWellDefined( mor5 );
 #! true
-mor06 := RandomMorphismWithFixedRangeByInteger( SkeletalFinSets, obj0, 10 );;
+mor06 := RandomMorphismWithFixedRangeByInteger( 
+                 SkeletalFinSets, obj0, 10 );;
 IsWellDefined( mor06 );
 #! true
-mor7 := RandomMorphismWithFixedRangeByInteger( SkeletalFinSets, obj1, 10 );;
+mor7 := RandomMorphismWithFixedRangeByInteger( 
+                SkeletalFinSets, obj1, 10 );;
 IsWellDefined( mor7 );
 #! true
-mor8 := RandomMorphismWithFixedSourceByList( SkeletalFinSets, obj1, [ 10 ] );;
+mor8 := RandomMorphismWithFixedSourceByList( 
+                SkeletalFinSets, obj1, [ 10 ] );;
 IsWellDefined( mor8 );
 #! true
-mor09 := RandomMorphismWithFixedRangeByList( SkeletalFinSets, obj0, [ 0 ] );;
+mor09 := RandomMorphismWithFixedRangeByList( 
+                 SkeletalFinSets, obj0, [ 0 ] );;
 IsWellDefined( mor09 );
 #! true
-mor10 := RandomMorphismWithFixedRangeByList( SkeletalFinSets, obj1, [ 10 ] );;
+mor10 := RandomMorphismWithFixedRangeByList( 
+                 SkeletalFinSets, obj1, [ 10 ] );;
 IsWellDefined( mor10 );
 #! true
-mor11 := RandomMorphismWithFixedSourceAndRangeByList( SkeletalFinSets, obj2, obj2, [ 10 ] );;
+mor11 := RandomMorphismWithFixedSourceAndRangeByList( 
+                 SkeletalFinSets, obj2, obj2, [ 10 ] );;
 IsWellDefined( mor11 );
 #! true
 #! @EndExample
