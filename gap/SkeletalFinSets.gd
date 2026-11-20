@@ -32,14 +32,13 @@ DeclareCategory( "IsMorphismInSkeletalCategoryOfFiniteSets",
 ##
 ####################################
 
+# COVERAGE_IGNORE_BLOCK_START
 if false then
-
 #! @Description
 #! The arguments are a category <A>C</A> of skeletal finite sets and a non-empty list <A>L</A> of non-negative integers.
 #! The output is an object whose cardinality is a random element in <A>L</A>.
 #! @Returns an object in a category of skeletal finite sets
 #! @Arguments C, L
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomObjectByList", [ IsCategoryOfSkeletalFinSets, IsList ] );
 
 #! @Description
@@ -47,7 +46,6 @@ DeclareOperation( "RandomObjectByList", [ IsCategoryOfSkeletalFinSets, IsList ] 
 #! The output is an object whose cardinality is at most <A>n</A>.
 #! @Returns an object in a category of skeletal finite sets
 #! @Arguments C, n
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomObjectByInteger", [ IsCategoryOfSkeletalFinSets, IsInt ] );
 
 #! @Description
@@ -56,7 +54,6 @@ DeclareOperation( "RandomObjectByInteger", [ IsCategoryOfSkeletalFinSets, IsInt 
 #! In particular, the argument <A>n</A> will be disregarded.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments C, S, R, n
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger", [ IsCategoryOfSkeletalFinSets, IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsInt ] );
 
 #! @Description
@@ -64,7 +61,6 @@ DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger", [ IsCategory
 #! The output is a morphism from an object <A>S</A> to an object <A>R</A> whose cardinalities are random elements in <A>L[1]</A> and <A>L[2]</A> respectively.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments C, L
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomMorphismByList", [ IsCategoryOfSkeletalFinSets, IsList ] );
 
 #! @Description
@@ -72,7 +68,6 @@ DeclareOperation( "RandomMorphismByList", [ IsCategoryOfSkeletalFinSets, IsList 
 #! The output is a morphism whose source and range cardinalities are at most <A>n</A>.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments C, n
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomMorphismByInteger", [ IsCategoryOfSkeletalFinSets, IsInt ] );
 
 #! @Description
@@ -80,7 +75,6 @@ DeclareOperation( "RandomMorphismByInteger", [ IsCategoryOfSkeletalFinSets, IsIn
 #! The output is a morphism from <A>S</A> to a random object <A>R</A> whose cardinality is at most <A>n</A> and at least <A>1</A>.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments S, n
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomMorphismWithFixedSourceByInteger", [ IsCategoryOfSkeletalFinSets, IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsInt ] );
 
 #! @Description
@@ -88,7 +82,6 @@ DeclareOperation( "RandomMorphismWithFixedSourceByInteger", [ IsCategoryOfSkelet
 #! The output is a morphism to <A>R</A> from an random object <A>S</A> whose cardinality is at most <A>n</A>.
 #! @Returns a morphism in a category of skeletal finite sets
 #! @Arguments C, R, n
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomMorphismWithFixedRangeByInteger", [ IsCategoryOfSkeletalFinSets, IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsInt ] );
 
 #! @Description
@@ -96,7 +89,6 @@ DeclareOperation( "RandomMorphismWithFixedRangeByInteger", [ IsCategoryOfSkeleta
 #! The output is a morphism from <A>S</A> to a random object <A>R</A> whose cardinality is a random element of <A>L</A>.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments C, S, L
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomMorphismWithFixedSourceByList", [ IsCategoryOfSkeletalFinSets, IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsList ] );
 
 #! @Description
@@ -104,7 +96,6 @@ DeclareOperation( "RandomMorphismWithFixedSourceByList", [ IsCategoryOfSkeletalF
 #! The output is a morphism to <A>R</A> from an random object <A>S</A> whose cardinality is an element of <A>L</A>.
 #! @Returns a morphism in a category of skeletal finite sets
 #! @Arguments C, R, L
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomMorphismWithFixedRangeByList", [ IsCategoryOfSkeletalFinSets, IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsList ] );
 
 #! @Description
@@ -113,10 +104,10 @@ DeclareOperation( "RandomMorphismWithFixedRangeByList", [ IsCategoryOfSkeletalFi
 #! In particular, the argument <A>L</A> will be disregarded.
 #! @Returns  a morphism in a category of skeletal finite sets
 #! @Arguments C, S, R, L
-# COVERAGE_IGNORE_NEXT_LINE
 DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList", [ IsCategoryOfSkeletalFinSets, IsCategoryOfSkeletalFinSets, IsCategoryOfSkeletalFinSetsObject, IsCategoryOfSkeletalFinSetsObject, IsList ] );
 
 fi;
+# COVERAGE_IGNORE_BLOCK_END
 
 #! @Section Attributes
 
