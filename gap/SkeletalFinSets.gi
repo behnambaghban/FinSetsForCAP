@@ -350,6 +350,7 @@ AddRandomObjectByInteger( SkeletalFinSets,
 
       # COVERAGE_IGNORE_NEXT_LINE
       Error( "the integer passed to 'RandomObjectByInteger' in ", Name( cat ), " must be a non-negative integer!\n" );
+
     fi;
 
     return RandomObjectByList( cat, [ 0 .. n ] );
@@ -368,6 +369,7 @@ AddRandomMorphismWithFixedSourceAndRangeByInteger( SkeletalFinSets,
     elif Cardinality( R ) = 0 and Cardinality( S ) = 0 then
 
       return MapOfFinSets( S, [ ], R );
+
     fi;
 
     return MapOfFinSets( S, List( [ 0 .. Cardinality( S ) - 1 ], i -> Random( 0, Cardinality( R ) - 1 ) ), R );
