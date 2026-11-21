@@ -339,6 +339,7 @@ AddRandomObjectByList( SkeletalFinSets,
 
       # COVERAGE_IGNORE_NEXT_LINE
       Error( "the list passed to 'RandomObjectByList' in ", Name( cat ), " must be a non-empty list of non-negative integers!\n" );
+
     fi;
 
     return FinSet( cat, Random( L ) );
